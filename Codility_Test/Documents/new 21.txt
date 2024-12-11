@@ -1,0 +1,16 @@
+|Method                                                  |Result type                               |Conditions                                                                                                           |
+|--------------------------------------------------------|------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+|`GetStores()`                                           |`UnauthorizedResult()` (401)              |If `x-test-country-code` header is empty, null, whitespace or request contains multiple `x-test-country-code` headers|
+|`GetStores()`                                           |`OkObjectResult(ICollection<Store>)` (200)|If provided data were correct                                                                                        |
+|`GetStore(int storeId, bool includeCustomers = false)`  |`NotFoundResult()` (404)                  |If store was not found                                                                                               |
+|`GetStore(int storeId, bool includeCustomers = false)`  |`ForbidResult()` (403)                    |If `x-test-country-code` header's value does not match store's **CountryCode**                                       |
+|`GetStore(int storeId, bool includeCustomers = false)`  |`UnauthorizedResult()` (401)              |If `x-test-country-code` header is empty, null, whitespace or request contains multiple `x-test-country-code` headers|
+|`GetStore(int storeId, bool includeCustomers = false)`  |`OkObjectResult(Store)` (200)             |If provided data were correct                                                                                        |
+|`CreateCustomer(Customer customer)`                     |`UnauthorizedResult()` (401)              |If `x-test-country-code` header is empty, null, whitespace or request contains multiple `x-test-country-code` headers|
+|`CreateCustomer(Customer customer)`                     |`BadRequestResult()` (400)                |If incorrect data were provided (provided  `Customer` is not correct)                                                |
+|`CreateCustomer(Customer customer)`                     |`OkObjectResult(Customer)` (200)          |If provided data were correct                                                                                        |
+|--------------------------------------------------------|------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+
+
+
+
